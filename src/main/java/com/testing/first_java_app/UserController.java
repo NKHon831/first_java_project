@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-    
+
     @RequestMapping("/")
-    public String homePage(){
-        return "Hello world";
+    public String homePage() {
+        return "Hello Player. This is my first java application";
     }
 }
