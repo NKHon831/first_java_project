@@ -1,6 +1,7 @@
 package com.testing.first_java_app;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -13,9 +14,10 @@ import com.google.transit.realtime.GtfsRealtime.FeedMessage;
 
 @RestController
 public class VehicleController {
-
-    @RequestMapping("/vehicle/location")
-    public String getVehicleLocation() {
+ 
+    @RequestMapping(value="/vehicle/location", produces = "application/json")
+    @ResponseBody
+    public Vehicle getVehicleLocation() {
         String location = "";
         String licensePlate = "";
 
@@ -31,10 +33,9 @@ public class VehicleController {
                     System.out.println("Bus T815 : " + entity);
                     System.out.println("Vehicle stop status: " + entity.getVehicle().getCurrentStatus());
                     System.out.println("Stop id: " + entity.getVehicle().getStopId());
-                    location = Double.toString(entity.getVehicle().getPosition().getLatitude()) + "," + Double.toString(entity.getVehicle().getPosition().getLongitude());
+                    location = Double.toString(entity.getVehicle().getPosition().getLatitude()) + ","
+                            + Double.toString(entity.getVehicle().getPosition().getLongitude());
                     licensePlate = entity.getVehicle().getVehicle().getLicensePlate();
-
-
                 }
 
             }
@@ -42,6 +43,6 @@ public class VehicleController {
         } catch (IOException e) {
             System.out.println("Transport API issue");
         }
-        return new Vehicle(location, licensePlate).toString();
+        return new Vehicle(location, licensePlate);
     }
 }

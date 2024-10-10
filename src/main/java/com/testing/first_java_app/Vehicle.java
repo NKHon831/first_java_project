@@ -19,4 +19,20 @@ public class Vehicle {
                 "Location : " + location;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getLicensePlate() {
+        return license_plate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.license_plate = licensePlate;
+    }
+
 }
