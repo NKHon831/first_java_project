@@ -10,4 +10,9 @@ public class UserController {
     public String homePage() {
         return "Hello Player. This is my first java application";
     }
+
+    @RequestMapping("/testing")
+    public Integer testInt(){
+        return 21;
+    }
 }
